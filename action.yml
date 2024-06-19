@@ -1,0 +1,66 @@
+name: Notify Discord
+description: Send a notification to a Discord WebHook reflecting the success, failure, or cancellation of a GitHub Action.
+
+inputs:
+  color-failure:
+    default: 11674146
+    type: string
+  color-success:
+    default: 2273826
+    type: string
+  discord-webhook:
+    required: true
+    type: string
+  repository:
+    required: true
+    type: string
+  result:
+    required: true
+    type: string
+  run_id:
+    required: true
+    type: string
+  run_number:
+    required: true
+    type: string
+  workflow:
+    required: true
+    type: string
+
+runs:
+  using: composite
+  steps:
+    - name: Send success notification
+      if: ${{ inputs.result == 'success' }}
+      uses: Ilshidur/action-discord@0.3.2
+      env:
+        DISCORD_WEBHOOK: ${{ inputs.discord-webhook }}
+        DISCORD_EMBEDS: |
+          [{
+            "color": "${{ inputs.color-success }}",
+            "title": "${{ inputs.repository }}",
+            "description": "${{ inputs.workflow }} [#${{ inputs.run_number }}](https://github.com/${{ inputs.repository }}/actions/runs/${{ inputs.run_id }}) succeeded"
+          }]
+
+    - name: Send failure notification
+      if: ${{ inputs.result == 'failure' }}
+      uses: Ilshidur/action-discord@0.3.2
+      env:
+        DISCORD_WEBHOOK: ${{ inputs.discord-webhook }}
+        DISCORD_EMBEDS: |
+          [{
+            "color": "${{ inputs.color-failure }}",
+            "title": "${{ inputs.repository }}",
+            "description": "${{ inputs.workflow }} [#${{ inputs.run_number }}](https://github.com/${{ inputs.repository }}/actions/runs/${{ inputs.run_id }}) failed"
+          }]
+
+    - name: Send cancelled notification
+      if: ${{ inputs.result == 'cancelled' }}
+      uses: Ilshidur/action-discord@0.3.2
+      env:
+        DISCORD_WEBHOOK: ${{ inputs.discord-webhook }}
+        DISCORD_EMBEDS: |
+          [{
+            "title": "${{ inputs.repository }}",
+            "description": "${{ inputs.workflow }} [#${{ inputs.run_number }}](https://github.com/${{ inputs.repository }}/actions/runs/${{ inputs.run_id }}) was cancelled"
+          }]
