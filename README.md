@@ -1,24 +1,28 @@
-# Notify Discord Action
+# Send Discord Workflow Notification
 
-A simple workflow to send a simple success, failure, or cancellation notification for a GitHub Action.
+A simple GitHub action to send a success, failure, or cancellation notification for your GitHub workflow.
+
+## Usage
 
 Copy the following into your workflow:
 
 ```yaml
 notify:
-  name: Notify Discord
-  uses: annybs/notify-discord@develop
+  name: Send Discord workflow notification
+  uses: annybs/action-notify-discord@v1
   needs: YOUR_JOB_NAME
   if: ${{ always() }}
   with:
-    webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-
     repository: ${{ github.repository }}
     result: ${{ needs.YOUR_JOB_NAME.result }}
-    run_id: ${{ github.run_id }}
-    run_number: ${{ github.run_number }}
+    run-id: ${{ github.run_id }}
+    run-number: ${{ github.run_number }}
+    webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
     workflow: ${{ github.workflow }}
 ```
 
-- Ensure a `DISCORD_WEBHOOK` secret is available to your repository (it doesn't have to use this name)
-- Replace `YOUR_JOB_NAME` with the name of the job you want to send notifications for
+Set or replace `secrets.DISCORD_WEBHOOK` and `YOUR_JOB_NAME` as applicable for your workflow.
+
+## References
+
+- <https://github.com/actions/typescript-action>

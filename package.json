@@ -1,11 +1,12 @@
 {
-  "name": "notify-discord",
+  "name": "@annybs/action-notify-discord",
+  "private": true,
   "version": "1.0.0",
-  "description": "A simple workflow to send a simple success, failure, or cancellation notification for a GitHub Action.",
+  "description": "A simple GitHub action to send a success, failure, or cancellation notification for your GitHub workflow.",
   "author": "Aneurin Barker Snook <a@aneur.in>",
   "main": "dist/main.js",
   "scripts": {
-    "build": "tsc",
+    "build": "ncc build src/main.ts -o dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@annybs/eslint": "^1.0.0",
+    "@vercel/ncc": "^0.38.1",
     "typescript": "^5.4.5"
   }
 }

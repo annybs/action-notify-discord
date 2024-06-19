@@ -5,7 +5,6 @@ const required = true
 export default function getInputs() {
   const data = {
     color: {
-      cancelled: core.getInput('color-cancelled') || undefined,
       failure: core.getInput('color-failure'),
       success: core.getInput('color-success'),
     },
