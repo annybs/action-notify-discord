@@ -2,6 +2,10 @@ name: Send Discord Build Notification
 description: Send a notification to a Discord WebHook reflecting the success, failure, or cancellation of a GitHub Action.
 author: Aneurin Barker Snook
 
+branding:
+  icon: check-circle
+  color: green
+
 inputs:
   color-failure:
     default: 11674146
