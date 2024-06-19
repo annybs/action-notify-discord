@@ -111786,7 +111786,7 @@ function main() {
         }
         else if (inputs.result === 'success') {
             color = parseInt(inputs.color.success);
-            description = `${inputs.workflow} [#${inputs.run.number}](${url}) cancelled`;
+            description = `${inputs.workflow} [#${inputs.run.number}](${url}) succeeded`;
         }
         else {
             color = undefined;

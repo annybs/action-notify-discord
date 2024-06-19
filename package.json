@@ -1,7 +1,7 @@
 {
   "name": "@annybs/action-notify-discord",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple GitHub action to send a success, failure, or cancellation notification for your GitHub workflow.",
   "author": "Aneurin Barker Snook <a@aneur.in>",
   "main": "dist/index.js",
