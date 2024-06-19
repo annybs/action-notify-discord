@@ -13,7 +13,7 @@ notify:
   needs: deploy
   steps:
     - name: Send notification
-      uses: annybs/action-notify-discord@v1.0.0
+      uses: annybs/action-notify-discord@v1
       if: ${{ always() }}
       with:
         repository: ${{ github.repository }}
