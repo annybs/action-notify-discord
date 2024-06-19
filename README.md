@@ -11,7 +11,8 @@ notify:
   needs: YOUR_JOB_NAME
   if: ${{ always() }}
   with:
-    discord-webhook: ${{ secrets.DISCORD_WEBHOOK }}
+    webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+
     repository: ${{ github.repository }}
     result: ${{ needs.YOUR_JOB_NAME.result }}
     run_id: ${{ github.run_id }}

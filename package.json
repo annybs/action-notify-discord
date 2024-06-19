@@ -1,0 +1,21 @@
+{
+  "name": "notify-discord",
+  "version": "1.0.0",
+  "description": "A simple workflow to send a simple success, failure, or cancellation notification for a GitHub Action.",
+  "author": "Aneurin Barker Snook <a@aneur.in>",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "discord.js": "^14.15.3"
+  },
+  "devDependencies": {
+    "@annybs/eslint": "^1.0.0",
+    "typescript": "^5.4.5"
+  }
+}
