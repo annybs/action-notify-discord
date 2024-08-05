@@ -1,5 +1,0 @@
-https://github.com/recipeer/docs/blob/develop/.github/workflows/discord.yml
-
-https://github.com/recipeer/docs/blob/develop/workflows/discord-notifications.md
-
-https://github.com/annybs/notify-discord
